@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+ 
+.back-img{
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+}
+
+.background {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('/img/home-big.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 20px;
+}
+
+.img-logo{
+  margin-left: 15%;
+}
+
+.logo{
+  padding-top: 30px;
+  width: 364px;
+  height: 420px;
+}
+
+.green-box{
+  padding: 10px;
+  border-radius: 15px;
+  background: rgba(11, 249, 92, 0.81);
+  bottom: 20px;
+  width: 100%;
+}
+
+.form-select{
+  width: 350px;
+}
+
+.form-floatin{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mb-3{
+  margin-top: 50px;
+  width: 350px;
+}
+
+
+@media screen and (max-width: 960px) {
+  .background{
+    background-image: url('/img/Pad-back.png');
+    background-size: cover;
+  }
+  .logo{
+    width: 264px;
+    height: 301px;
+  }
+  .img-logo{
+    margin-left: 25%;
+    margin-bottom: 25%;
+  }
+  .green-box{
+    padding: 50px;
+  }
+  .mb-3{
+    width: 100%;
+  }
+  .form-select {
+    width: 100%;
+}
+  
+}
+
+@media screen and (max-width: 375px) {
+  .background{
+    background-image: url('/img/home.png');
+  }
+  .logo{
+    width: 204px;
+    height: 226px;
+  }
+  .img-logo{
+    margin-left: 25%;
+    margin-bottom: 25%;
+  }
+  .green-box{
+    padding: 25px;
+  }
+  .mb-3{
+    width: 100%;
+  }
+  .form-select {
+    width: 100%;
+}
+}
+
+
+/* Quiz Seite */
+
+.logo-q{
+  width: 88px;
+  height: 100px;
+}
+
+.q-logo-box{
+  margin-left: 15%;
+}
+
+.frage-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 5%;
+}
+
+.background-q {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('/img/quiz-back.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 20px;
+}
+
+.quiz-form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin-bottom: 2%;
+}
+
+.quiz-form-floating{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10%;
+}
+
+@media screen and (max-width: 960px) {
+  .background-q{
+    background-image: url('/img/quiz-pad-back.png');
+    background-size: cover;
+  }
+  
+  .frage-container{
+    font-size: 40px;
+    margin-bottom: 10%;
+  }
+
+  .quiz-form-floating{
+    margin-bottom: 30%;
+  }
+  
+  
+}
+
+@media screen and (max-width: 375px) {
+  .background-q{
+    background-image: url('/img/quiz-handy-back.png');
+  }
+  .frage-container{
+    font-size: 30px;
+    margin-bottom: 10%;
+  }
+
+  .quiz-form-floating{
+    margin-bottom: 30%;
+  }
+  
+  .quiz-form{
+    font-size: 23px;
+  }
+}
+
+/* Auswertung Seite */
+
+.background-a{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('/img/quiz-back.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: 20px;
+}
+
+.a-logo-box{
+  display: flex;
+  padding-top: 150px;
+}
+
+
+.last-container{
+  color: #96816a;
+  text-align: center;
+  font-family: Inter;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 500;
+  padding-top: 180px;
+}
+
+.auswertung-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: #573e3e;
+  text-align: center;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 5%;
+}
+
+.auswertung-bnt{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30%
+}
+
+@media screen and (max-width: 960px) {
+  .background-a{
+    background-image: url('/img/quiz-pad-back.png');
+    background-size: cover;
+  }
+  .a-logo-box{
+    display: flex;
+    padding-top: 5px;
+  }
+  .last-container{
+    font-size: 60px;
+  }
+
+  .auswertung-text{
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .background-a{
+    background-image: url('/img/quiz-handy-back.png');
+  }
+  .a-logo-box{
+    display: flex;
+    padding-top: 0px;
+  }
+  .last-container{
+    font-size: 50px;
+  }
+
+  .auswertung-text{
+    font-size: 30px;
+  }
+}
