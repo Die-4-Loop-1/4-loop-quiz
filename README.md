@@ -12,3 +12,14 @@ Im CSS wurde jede Seite via @media für ein responsive darstellung erarbeitet.
 Das php wurde in zusammenarbeit des Kursleiters erstellt. Die erklärungen für die Funktionalität war sehr lehreich.
 
 Die Daten der Fragen wurde in zusammenarbeit der gesammten klasse erarbeitet. Meine Topics waren tiere und werkzeuge.
+
+# Git Branches 
+
+main -----> dev -----> matilda
+            |--------> andreas
+            |--------> wojtek
+            |--------> ismael
+
+git admin ----> matilda / git stellvertretung Ismael
+
+rules / regeln ----> frage git master un collegen wenn push in dev.
