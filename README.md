@@ -19,6 +19,8 @@ main -----> dev -----> matilda
             |--------> andreas
             |--------> wojtek
             |--------> ismael
+            |--------> thala
+            
 
 git admin ----> matilda / git stellvertretung Ismael
 
