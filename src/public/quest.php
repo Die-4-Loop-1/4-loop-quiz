@@ -102,8 +102,12 @@
                         <button type="submit" class="btn btn-success">Nächste Frage</button>
                 </div> 
             </form>
+            
         </div>    
     </div>
+    <audio id="background-music" autoplay loop>
+    <source src="audio/questions_background_music.mp3" type="audio/mp3">
+</audio>
     <?php 
         // $_SESSION["session-written"] = true;
         // prettyPrint($_SESSION, '$_SESSION');
