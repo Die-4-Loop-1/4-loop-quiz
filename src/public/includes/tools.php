@@ -8,4 +8,10 @@ function prettyPrint($value, $label) {
     print "</pre>";
 }
 
+function prettyERPrint($stuff) {
+    echo ('<pre>');
+    print_r($stuff);
+    echo ('</pre>');
+}
+
 ?>
