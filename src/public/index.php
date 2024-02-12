@@ -17,8 +17,9 @@ include "./includes/data-collector.php"; // Muss zuerst sein wegen Start _SESSIO
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" />
+    
     <script src="assets/js/main.js"></script>
-
+    <link rel="stylesheet" href="assets/css/animation.css">
 </head>
 
 <body>
@@ -43,6 +44,16 @@ include "./includes/data-collector.php"; // Muss zuerst sein wegen Start _SESSIO
                         <option value="history">History</option>
                         <option value="werkzeuge">Werkzeuge</option>
                     </select>
+                          <div class="animated-top" id="a1"> Cinema </div>
+                          <div class="animated-top" id="a2" >Tech</div>
+                          <div class="animated-top" id="a3" >Tierwelt</div>
+                          <div class="animated-top" id="a4" >Animals</div>
+                          <div class="animated-top" id="a5" >Chuck Norris</div>
+                          <div class="animated-top" id="a6" >Tiere</div>
+                          <div class="animated-top" id="a7" >Geography</div>
+                          <div class="animated-top" id="a9" >Astronomie</div>
+                          <div class="animated-top" id ="a10" >History</div>
+                          <div class="animated-top" id="a11" >Werkzeuge</div>
                           
                 </div>
                 <div class="form-floatin">
