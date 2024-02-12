@@ -66,6 +66,7 @@ body {
 }
 
 
+
 @media screen and (max-width: 960px) {
   .background{
     background-image: url('/img/Pad-back.png');
@@ -149,6 +150,7 @@ body {
 }
 
 .quiz-form{
+  /* position: relative; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,6 +163,20 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 10%;
+}
+
+.custom-link {
+  color: blue; 
+  margin-right: 10px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#urlContainer{
+  /* position: absolute; */
+  width: fit-content;
+  top: 0;
+  right: 0;
 }
 
 @media screen and (max-width: 960px) {
@@ -242,6 +258,13 @@ body {
   font-weight: 500;
   line-height: normal;
   padding: 5%;
+}
+
+.question-icon{
+  background-color: rgb(248, 240, 5);
+  border-radius: 15px;
+  /* display: none; */
+  
 }
 
 .auswertung-bnt{
