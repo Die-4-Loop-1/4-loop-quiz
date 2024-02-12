@@ -65,19 +65,28 @@
             <p>Herzlichen <br>Glückwunsch</p>
         </div>
         <div class="auswertung-text">
-            <p><?php $prozentErgebnis = $totalPoints * 100 / $maxTotalPoints;
-        if ($prozentErgebnis > 70) {
-            echo "<p> Gut gemacht, weiter so.</p>";
-        } elseif ($prozentErgebnis >= 40 && $prozentErgebnis <= 70) {
-           echo "<p>Sie können es noch Besser</p>";
-        } else {
-           echo "<p>Klicken Sie doch nicht einfach durch";
-        }?></p>
+    <?php 
+    $prozentErgebnis = $totalPoints * 100 / $maxTotalPoints;
+    if ($prozentErgebnis > 70) {
+        echo "<p> Gut gemacht, weiter so.</p>";
+        $audioFile = "audio/good_job.mp3"; // Path to the audio file for congratulations
+    } elseif ($prozentErgebnis >= 40 && $prozentErgebnis <= 70) {
+        echo "<p>Sie können es noch besser.</p>";
+        $audioFile = "audio/could_better.mp3"; // Path to the audio file for suggestions
+    } else {
+        echo "<p>Klicken Sie doch nicht einfach durch.</p>";
+        $audioFile = "audio/try_harder.mp3"; // Path to the audio file for generic message
+    }
+    ?>
 
-
-            <p>Sie haben <?php echo $totalPoints; ?> von <?php echo $maxTotalPoints; ?> möglichen Punkten erreicht.</p>
-        </div>
-        
+    <p>Sie haben <?php echo $totalPoints; ?> von <?php echo $maxTotalPoints; ?> möglichen Punkten erreicht.</p>
+    
+    <!-- Add the audio element here without controls -->
+    <audio autoplay>
+        <source src="<?php echo $audioFile; ?>" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+</div>
                 <div class="auswertung-bnt">
                     <a href="index.php">
                         <button type="button" class="btn btn-success">Neues Quiz</button>
