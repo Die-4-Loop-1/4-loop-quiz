@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+<style>
+    body {
+        background-color: black;
+    }
+    img {
+        margin: 3px;
+    }
+</style>
 </head>
 <body>
-    
+<canvas id="myCanvas" width="300" height="195"></canvas>
 </body>
-</html>
-
 <?php
+
+function prettyERPrint($stuff) {
+    echo ('<pre>');
+    print_r($stuff);
+    echo ('</pre>');
+}
 $image = imagecreatefromjpeg('img/chessboard.jpg');
-$resolution = 10;
+$resolution = 100;
 $width = imagesx($image);
 $height = imagesy($image);
 // list($width, $height) = getimagesize($image);
@@ -21,7 +33,7 @@ $hIndex = ceil($height / ($resolution / $aspectRatio));
 $wIndex = ceil($width / $resolution);
 $imgCounter = 0;    
 
-$outputDirectory = __DIR__ . '/cutterImgs/';
+$outputDirectory = 'cutterImgs/';
 chmod($outputDirectory, 0777);
 for ($i=0; $i < $height / $hIndex; $i++) {
     for ($j=0; $j < $width / $wIndex; $j++) {
@@ -34,8 +46,8 @@ for ($i=0; $i < $height / $hIndex; $i++) {
                 // Store the cropped image in the array
                 
                 // $images[] = $croppedImage;
-                $filename = $outputDirectory . '/cropped_image_' . $imgCounter . '.jpg';
-
+                $filename = $outputDirectory . 'pix' . $imgCounter . '.jpg';
+                $filenames[] = $filename;
                 // Save the cropped image as JPEG to the specified filename
                 imagejpeg($croppedImage, $filename);
 
@@ -46,64 +58,56 @@ for ($i=0; $i < $height / $hIndex; $i++) {
         }
  }
  
- 
- // Display the images
-//  foreach ($images as $img) {
-//      echo '<img src="data:image/jpeg;base64,' . base64_encode(imagejpeg($img, null, 100)) . '" />';
-//      imagedestroy($img); // Free up memory
-//  }  
-
-// Load the image
-// $image = imagecreatefromjpeg('original.jpg');
-
-// Define the rectangular area to crop
-// $rect = ['x' => $wIndex * $j, 'y' => $hIndex * $i, 'width' => $wIndex, 'height' => $hIndex];
-
-// Crop the image
-// $croppedImage = imagecrop($image, $rect);
-
-// Output the cropped image to a file
-// imagejpeg($croppedImage, 'cropped.jpg');
-
-// Free up memory
-// imagedestroy($image);
-// imagedestroy($croppedImage);
-
-// Get the size of the image
-// $imageInfo = getimagesize('image.jpg');
-
-// Extract width and height from the returned array
-// $width = $imageInfo[0]; // width is at index 0
-// $height = $imageInfo[1]; // height is at index 1
-
-// echo "Width: $width, Height: $height";
-
 $jsonImages = json_encode($image);
-echo("<script> let images = " . $jsonImages . "</script>");
 
-
-
-
+$jsonFilenames = json_encode($filenames);
+echo("<script> let images = " . $jsonFilenames . "</script>");
+echo("<script> let resolution = " . $resolution . "</script>");
 
 $imgs = json_encode(scandir($outputDirectory));
 ?>
+
+
 <script>
-    let imgs = <?php echo $imgs; ?>;
-    imgs.forEach(imgLink => {
-        // Create an image element
+    for (let i = 0; i < images.length; i++) {
+        let image = document.createElement('img');
+        image.src = images[i];
+        document.body.appendChild(image);
+        if((i+1) !== 0 && (i+1) % resolution === 0) {
+            document.body.appendChild(document.createElement('br'));
+        }
+    }
+    images.forEach(imgLink => {
+        console.log(imgLink);
     let image = document.createElement('img');
-
-   
-    image.src = `path/to/your/${imgLink}`;
-
-
-    // // Create a container element
-    // var container = document.createElement('div');
-
-    // // Append the image to the container
-    // container.appendChild(image);
-
-    // Append the container to the document body
+    image.src = imgLink;
     document.body.appendChild(image);
     });
+    // let canvas = document.getElementById('myCanvas');
+    // let ctx = canvas.getContext('2d');
+
+    // let imageWidth = 3;
+    // let imageHeight = 3;
+    
+    // let x = 0;
+    // let y = 0;
+
+    // images.forEach((imgLink, i) => {
+    //     let image = new Image();
+    //     image.onload = function() {
+    //         ctx.drawImage(image, x, y, imageWidth, imageHeight);
+    //         x += imageWidth;
+    //         if((i+1) !== 0 && (i+1) % resolution === 0) {
+    //             x = 0;
+    //             y += imageHeight;
+    //         }
+    //     };
+    //     image.src = imgLink;
+    // });
+
+
+
+  
+
 </script>
+</html>
