@@ -78,11 +78,20 @@ include "./includes/data-collector.php"; // Muss zuerst sein wegen Start _SESSIO
         </div>
 
 
-        <audio src="./audio/hero.wav"></audio>
+        <!-- <audio src="./audio/hero.wav"></audio> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-
-
+<!-- <script>
+        var audio = new Audio('./audio/hero.wav');
+  var UserInteracted = setInterval(()=>{
+    audio.play()
+    .then(()=>{
+      clearInterval(UserInteracted);
+    })
+    .catch(()=>{
+      console.log("waiting for user interaction to play first notification")
+    });     
+  },100)
+</script> -->
 
     
 </body>
@@ -93,8 +102,8 @@ include "./includes/data-collector.php"; // Muss zuerst sein wegen Start _SESSIO
         let currentIndex = 0;
         let rotationInterval;
         const audio = document.querySelector("audio");
-        audio.volume = 1;
-        audio.play();
+        // audio.volume = 1;
+        // audio.play();
 
 
 
@@ -105,6 +114,7 @@ include "./includes/data-collector.php"; // Muss zuerst sein wegen Start _SESSIO
                 currentIndex = (currentIndex + 1) % wordsArray.length;
             } else {
                 clearInterval(rotationInterval)
+                var audio = new Audio('./audio/hero.wav')
             }
 
             ; // Stop rotation after the first cycle
@@ -119,7 +129,6 @@ include "./includes/data-collector.php"; // Muss zuerst sein wegen Start _SESSIO
 
     });
 </script>
-
 
 
 
