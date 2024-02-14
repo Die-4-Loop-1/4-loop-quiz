@@ -9,12 +9,22 @@
         background-color: black;
     }
     img {
-        margin: 3px;
-    }
+            /* margin: 3px;
+            width: 100%;
+            height: auto; */
+        }
+        #imageContainer {
+            display: flex;
+            flex-wrap: wrap;
+            width: 300px;
+        }
 </style>
 </head>
 <body>
-<canvas id="myCanvas" width="300" height="195"></canvas>
+    <div id="imageContainer">
+
+    </div>
+<!-- <canvas id="myCanvas" width="500" height="195"></canvas> -->
 </body>
 <?php
 
@@ -27,11 +37,12 @@ $image = imagecreatefromjpeg('img/chessboard.jpg');
 $resolution = 100;
 $width = imagesx($image);
 $height = imagesy($image);
+prettyERPrint($width);
 // list($width, $height) = getimagesize($image);
 $aspectRatio = $width / $height;
 $hIndex = ceil($height / ($resolution / $aspectRatio));
 $wIndex = ceil($width / $resolution);
-$imgCounter = 0;    
+$imgCounter = 0;
 
 $outputDirectory = 'cutterImgs/';
 chmod($outputDirectory, 0777);
@@ -70,19 +81,29 @@ $imgs = json_encode(scandir($outputDirectory));
 
 <script>
     for (let i = 0; i < images.length; i++) {
-        let image = document.createElement('img');
-        image.src = images[i];
-        document.body.appendChild(image);
-        if((i+1) !== 0 && (i+1) % resolution === 0) {
-            document.body.appendChild(document.createElement('br'));
-        }
-    }
-    images.forEach(imgLink => {
-        console.log(imgLink);
     let image = document.createElement('img');
-    image.src = imgLink;
-    document.body.appendChild(image);
-    });
+    image.src = images[i];
+    document.getElementById('imageContainer').appendChild(image);
+}
+
+
+
+
+    // for (let i = 0; i < images.length; i++) {
+    //     let image = document.createElement('img');
+    //     image.src = images[i];
+    //     document.body.appendChild(image);
+    //     if((i+1) !== 0 && (i+1) % resolution === 0) {
+    //         document.body.appendChild(document.createElement('br'));
+    //     }
+    // }
+
+    // images.forEach(imgLink => {
+    //     console.log(imgLink);
+    // let image = document.createElement('img');
+    // image.src = imgLink;
+    // document.body.appendChild(image);
+    // });
     // let canvas = document.getElementById('myCanvas');
     // let ctx = canvas.getContext('2d');
 
@@ -92,18 +113,19 @@ $imgs = json_encode(scandir($outputDirectory));
     // let x = 0;
     // let y = 0;
 
-    // images.forEach((imgLink, i) => {
+    // for (let i = 0; i < images.length; i++) {
     //     let image = new Image();
     //     image.onload = function() {
     //         ctx.drawImage(image, x, y, imageWidth, imageHeight);
     //         x += imageWidth;
-    //         if((i+1) !== 0 && (i+1) % resolution === 0) {
+    //         if(x / resolution === 3) {
     //             x = 0;
     //             y += imageHeight;
     //         }
+            
     //     };
-    //     image.src = imgLink;
-    // });
+    //     image.src = images[i];
+    // };
 
 
 
