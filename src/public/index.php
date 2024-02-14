@@ -83,6 +83,8 @@ include "./includes/data-collector.php"; // Muss zuerst sein wegen Start _SESSIO
 
 
 
+
+    
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

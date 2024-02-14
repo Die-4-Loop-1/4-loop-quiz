@@ -66,6 +66,7 @@ body {
 }
 
 
+
 @media screen and (max-width: 960px) {
   .background{
     background-image: url('/img/Pad-back.png');
@@ -163,6 +164,19 @@ body {
   margin-bottom: 10%;
 }
 
+.custom-link {
+  color: blue; 
+  margin-right: 10px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+#urlContainer{
+  width: fit-content;
+  top: 0;
+  right: 0;
+}
+
 @media screen and (max-width: 960px) {
   .background-q{
     background-image: url('/img/quiz-pad-back.png');
@@ -244,6 +258,52 @@ body {
   padding: 5%;
 }
 
+.question-icon{
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  fill: white;
+}
+
+.question-icon svg{
+  position: relative;
+  z-index: 2;
+}
+
+.question-icon::before{
+  backdrop-filter: blur(15px);
+}
+
+.question-icon::after {
+  content: "";
+  position: absolute;
+  border-radius: 20px;
+  right: -17%;
+  top: 13%;
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+  background-image: conic-gradient(
+    #ff2e4e,
+    #d960ff,
+    #9264ff,
+    #0063f9,
+    #ffcd00,
+    #ff5c22,
+    #ff2e4e 
+  );
+}
+
+.question-icon:hover:after{
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin{
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
 .auswertung-bnt{
   display: flex;
   align-items: center;
@@ -283,5 +343,11 @@ body {
 
   .auswertung-text{
     font-size: 30px;
+  }
+  .question-icon::after{
+    right: -12%;
+    top: 5%;
+    width: 35px;
+    height: 35px;
   }
 }

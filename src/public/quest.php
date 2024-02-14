@@ -13,7 +13,9 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/q-annim.css" />
     <script src="assets/js/main.js"></script>
+
 
 </head>
 
@@ -31,6 +33,13 @@
         // prettyPrint($question, "Question");
          
     ?>
+    <div class="q-canvas">
+        <div class="q-container">
+            <div class="ball"></div>
+            <div class="shadow"></div>
+        </div>
+    </div>
+
     <div class="background-q">
         <div class="q-logo-box">
             <img class="logo-q" src="/img/logo-quiz.png" alt="">
@@ -108,6 +117,44 @@
         // $_SESSION["session-written"] = true;
         // prettyPrint($_SESSION, '$_SESSION');
     ?>
+    <script>// erstellt von Andreas
+
+        // erstelle manuell ein Array mit drei verschiedenen URLs drin
+        let urls = {
+            1 : "https://de.wikipedia.org/wiki/Hammer",
+            0 : "https://de.wikipedia.org/wiki/Hammer"
+        }
+
+
+        setTimeout(function() {
+            // erstelle einen foreach loop über das array
+            for (const key in urls){
+
+            // erstelle pro url, einen Anchor Tag
+            var link = document.createElement("a");
+
+            // füge diesem anchor tag das href Attribut hinzu
+            link.href = urls[key];
+
+            // füge dem Anchor Tag ein Label (Text) hinzu
+            link.innerHTML = '<div class="question-icon"><svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 -960 960 960" width="30"><path d="M240-80v-172q-57-52-88.5-121.5T120-520q0-150 105-255t255-105q125 0 221.5 73.5T827-615l52 205q5 19-7 34.5T840-360h-80v120q0 33-23.5 56.5T680-160h-80v80h-80v-160h160v-200h108l-38-155q-23-91-98-148t-172-57q-116 0-198 81t-82 197q0 60 24.5 114t69.5 96l26 24v208h-80Zm254-360Zm-14 120q17 0 28.5-11.5T520-360q0-17-11.5-28.5T480-400q-17 0-28.5 11.5T440-360q0 17 11.5 28.5T480-320Zm-30-128h61q0-25 6.5-40.5T544-526q18-20 35-40.5t17-53.5q0-42-32.5-71T483-720q-40 0-72.5 23T365-637l55 23q7-22 24.5-35.5T483-663q22 0 36.5 12t14.5 31q0 21-12.5 37.5T492-549q-20 21-31 42t-11 59Z"/></svg></div>';
+            // Füge den Anchor Tag eine Klasse hinzu, die Du dann im CSS stylen kannst
+            link.classList.add("custom-link");
+
+            // Füge target atribut mit dem wert _blank hinzu.
+            link.target = "_blank";
+
+            // speichere den gewünschten div Container in einer variabel (getElementById, o.Ä.)
+            var idContainer = document.querySelector('input[value="' + key + '"]');
+
+            // wähle das obere div an
+            let urlContainer = idContainer.parentElement;
+
+            // füge die erstellen Anchor Tags in den Container ein
+            urlContainer.appendChild(link);
+        }
+    }, 10000);
+    </script>
 
 </body>
 
