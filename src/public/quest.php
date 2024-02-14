@@ -105,7 +105,7 @@
             
         </div>    
     </div>
-    <audio id="background-music" autoplay loop>
+    <audio autoplay loop>
     <source src="audio/questions_background_music.mp3" type="audio/mp3">
 </audio>
     <?php 
