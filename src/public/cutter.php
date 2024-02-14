@@ -1,31 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-<style>
-    body {
-        background-color: black;
-    }
-    img {
-            /* margin: 3px;
-            width: 100%;
-            height: auto; */
-        }
-        #imageContainer {
-            display: flex;
-            flex-wrap: wrap;
-            width: 300px;
-        }
-</style>
-</head>
-<body>
-    <div id="imageContainer">
 
-    </div>
-<!-- <canvas id="myCanvas" width="500" height="195"></canvas> -->
-</body>
 <?php
 
 function prettyERPrint($stuff) {
@@ -78,7 +51,38 @@ echo("<script> let resolution = " . $resolution . "</script>");
 $imgs = json_encode(scandir($outputDirectory));
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body {
+        background-color: black;
+    }
+    img {
+            /* margin: 3px;
+            width: 100%;
+            height: auto; */
+        }
+        #imageContainer {
+            display: flex;
+            flex-wrap: wrap;
+            position: absolute;
+            top: 10%; /* toDel */
+            left: 10%; /* toDel */
+            width: <?php echo($width) ?>px;
+            transform: scale(1.5);
+        }
+</style>
+</head>
+<body>
+    <div id="imageContainer">
 
+    </div>
+<!-- <canvas id="myCanvas" width="500" height="195"></canvas> -->
+</body>
 <script>
     for (let i = 0; i < images.length; i++) {
     let image = document.createElement('img');
@@ -86,50 +90,11 @@ $imgs = json_encode(scandir($outputDirectory));
     document.getElementById('imageContainer').appendChild(image);
 }
 
+let theWholeBunch = document.querySelectorAll(img);
+let theRandomBunch = shuffle(theWholeBunch);
 
-
-
-    // for (let i = 0; i < images.length; i++) {
-    //     let image = document.createElement('img');
-    //     image.src = images[i];
-    //     document.body.appendChild(image);
-    //     if((i+1) !== 0 && (i+1) % resolution === 0) {
-    //         document.body.appendChild(document.createElement('br'));
-    //     }
-    // }
-
-    // images.forEach(imgLink => {
-    //     console.log(imgLink);
-    // let image = document.createElement('img');
-    // image.src = imgLink;
-    // document.body.appendChild(image);
-    // });
-    // let canvas = document.getElementById('myCanvas');
-    // let ctx = canvas.getContext('2d');
-
-    // let imageWidth = 3;
-    // let imageHeight = 3;
-    
-    // let x = 0;
-    // let y = 0;
-
-    // for (let i = 0; i < images.length; i++) {
-    //     let image = new Image();
-    //     image.onload = function() {
-    //         ctx.drawImage(image, x, y, imageWidth, imageHeight);
-    //         x += imageWidth;
-    //         if(x / resolution === 3) {
-    //             x = 0;
-    //             y += imageHeight;
-    //         }
-            
-    //     };
-    //     image.src = images[i];
-    // };
-
-
-
-  
-
+for (let i = 0; i < theWholeBunch.length; i++) {
+    const element = array[i];
+}
 </script>
 </html>
