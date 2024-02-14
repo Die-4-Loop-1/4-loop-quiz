@@ -1,5 +1,8 @@
 <?php
-include "./includes/data-collector.php"; // Muss zuerst sein wegen Start _SESSION()
+session_start();
+session_unset();
+session_destroy();
+include "./includes/collector.php"; // Muss zuerst sein wegen Start _SESSION()
     // phpinfo();
 
     // echo get_include_path();
@@ -27,7 +30,7 @@ include "./includes/data-collector.php"; // Muss zuerst sein wegen Start _SESSIO
             <img class="logo" src="/img/logo-quiz.png" alt="">
         </div>
         <div class="green-box">
-            <form id="quiz-form" action="quest.php" method="post" onsubmit="return navigate('next');">
+            <form id="quiz-form" action="question.php" method="post" onsubmit="return navigate('next');">
                 <div class="form-floatin">
                     <label for="quiz-topic" class="form-label"></label>
                     <select class="form-select" id="topic" name="topic" aria-label="Default select example">
@@ -50,7 +53,7 @@ include "./includes/data-collector.php"; // Muss zuerst sein wegen Start _SESSIO
                         <label for="questionNum" class="form-label">Wie viele Fragen möchten Sie beantworten</label>
                         <input type="number" class="form-control" id="questionNum" placeholder="Geben Sie eine Zahl ein"
                         name="questionNum" 
-                        min="5" max="40" value="10">
+                        min="2" max="40" value="10">
                     </div> 
 
                     <!-- lastQuestionIndex: mit PHP gesetzt -->
@@ -62,6 +65,7 @@ include "./includes/data-collector.php"; // Muss zuerst sein wegen Start _SESSIO
                         <input type="submit" class="btn btn-success" value="Quiz Starten">
                     </div>
             </form> 
+            
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
