@@ -24,5 +24,5 @@ function prettyERPrint($stuff) {
 //     // prettyPrint($questionIds);
 // }
 // $questionIds = generateQuiz($_POST['topic'], $_POST['questionNum'], $dbConn);
-?>
+
 

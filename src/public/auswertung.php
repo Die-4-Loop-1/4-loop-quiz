@@ -92,7 +92,7 @@ $message = getMessage($points, $totalPoints);
     Wichtig: Sämtliche $_SESSION-werte müssen fertig gesetzt sein. bevor die Punktzahlen gesammelt werden dürfen.*/
 
     $totalPoints = 0;
-    $maxTotalPoints = 0;
+    $maxTotalPoints = 1;
 
     foreach ($_SESSION as $questionKey =>  $data) {
         if (str_contains($questionKey, 'question-')){
@@ -114,13 +114,13 @@ $message = getMessage($points, $totalPoints);
                     $totalPoints = $totalPoints + $points;
                 }
             }
-            $maxTotalPoints = $maxTotalPoints + intval($data["maxPoints"]);
+            $maxTotalPoints = $maxTotalPoints + (intval($data["maxPoints"]));
         }
     }
         
 ?>
 <?php 
-$prozentErgebnis = $totalPoints * 100 / $maxTotalPoints;
+$prozentErgebnis = ($totalPoints * 100 / $maxTotalPoints)  ; 
 
 $resultText = ''; 
 $gif = '';
