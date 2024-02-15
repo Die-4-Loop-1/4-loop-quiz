@@ -12,8 +12,8 @@
 
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="/.assets/css/q-annim.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/q-annim.css" />
     <script src="assets/js/main.js"></script>
 
 
@@ -41,9 +41,7 @@
     </div>
 
     <div class="background-q">
-        <div class="q-logo-box">
-            <img class="logo-q" src="/img/logo-quiz.png" alt="">
-        </div>
+        
         <div class="frage-container">
             <h6>Frage <?php echo ($currentQuestionIndex + 1); ?> von <?php echo $quiz["questionNum"];?></h6>
             <p><?php echo $question["question_text"]; ?> </p>
@@ -111,12 +109,8 @@
                         <button type="submit" class="btn btn-success">Nächste Frage</button>
                 </div> 
             </form>
-            
         </div>    
     </div>
-    <audio autoplay loop>
-    <source src="audio/questions_background_music.mp3" type="audio/mp3">
-</audio>
     <?php 
         // $_SESSION["session-written"] = true;
         // prettyPrint($_SESSION, '$_SESSION');
