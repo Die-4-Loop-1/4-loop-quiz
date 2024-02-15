@@ -14,11 +14,13 @@ if (session_status() == PHP_SESSION_NONE) {
     $_SESSION['questionCounter'] = $questionCounter;
     }
     include "./includes/collector.php";
+    include 'wiki-api.php';
 
     $quiz = $_SESSION['quiz'];
     $questionId = $quiz['questionIds'][$questionCounter];
     $question = getQuestion($questionId, $dbConn);
     $answers = getAnswers($_SESSION['quiz']['answerIds'][$questionCounter], $dbConn);
+    $links = wikinator($questionId, $dbConn);
 // prettyPrint($quiz,'test');
     $type = 'radio';
     if (count($quiz['correctIds'][$questionCounter])>1) {
@@ -46,7 +48,7 @@ if (session_status() == PHP_SESSION_NONE) {
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" />
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js" defer></script>
 
 </head>
 
@@ -91,12 +93,13 @@ if (session_status() == PHP_SESSION_NONE) {
 </form>
 </div>    
 </div>
-<?php 
-// $_SESSION["session-written"] = true;
-// prettyPrint($_SESSION, '$_SESSION');
+<?php
+echo("<script>
+        let urls = " . json_encode($links) . ";
+    </script>");
 ?>
-<!-- <script src="./assets/js/main.js"></script> -->
-</body>
+
+
 </body>
 
 </html>

@@ -6,10 +6,13 @@ function prettyERPrint($stuff) {
     print_r($stuff);
     echo ('</pre>');
 }
-$image = imagecreatefromjpeg('img/chessboard.jpg');
+
+
+$image = imagecreatefromjpeg('wikiImgs/wikiPic.jpg');
 $resolution = 100;
 $width = imagesx($image);
 $height = imagesy($image);
+
 prettyERPrint($width);
 // list($width, $height) = getimagesize($image);
 $aspectRatio = $width / $height;
@@ -62,9 +65,9 @@ $imgs = json_encode(scandir($outputDirectory));
         background-color: black;
     }
     img {
-            /* margin: 3px;
-            width: 100%;
-            height: auto; */
+            display: inline-block;
+            max-width: 100%; 
+            height: auto; 
         }
         #imageContainer {
             display: flex;
@@ -72,8 +75,8 @@ $imgs = json_encode(scandir($outputDirectory));
             position: absolute;
             top: 10%; /* toDel */
             left: 10%; /* toDel */
-            width: <?php echo($width) ?>px;
-            transform: scale(1.5);
+            width: 400px;
+            /* transform: scale(1.5); */
         }
 </style>
 </head>
@@ -84,17 +87,39 @@ $imgs = json_encode(scandir($outputDirectory));
 <!-- <canvas id="myCanvas" width="500" height="195"></canvas> -->
 </body>
 <script>
-    for (let i = 0; i < images.length; i++) {
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+for (let i = 0; i < images.length; i++) {
     let image = document.createElement('img');
     image.src = images[i];
     document.getElementById('imageContainer').appendChild(image);
 }
 
-let theWholeBunch = document.querySelectorAll(img);
+let theWholeBunch = Array.from(document.querySelectorAll('img'));
 let theRandomBunch = shuffle(theWholeBunch);
 
-for (let i = 0; i < theWholeBunch.length; i++) {
-    const element = array[i];
-}
+
+// // Calculate the scale factor based on the desired content width
+// const containerWidth = 400; // Desired width of the container
+// const contentWidth = <?php echo($width); ?>; // Initial width of the content
+// const scaleFactor = containerWidth / contentWidth;
+
+// // Set the scale transform to adjust the content width while keeping the container width fixed
+// theWholeBunch.forEach(img => {
+//     img.style.transform = `scale(${scaleFactor})`;
+// });
+// let onePercentLength = Math.ceil(theRandomBunch.length * 0.01);
+// for (let i = 0; i < 40; i++) {
+//     let partOfTheBunch = theRandomBunch.slice(0, onePercentLength)
+   
+//     partOfTheBunch.forEach(img => {
+//         img.style.opacity = 1;
+//     });
+// }
 </script>
 </html>
