@@ -128,7 +128,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 35px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-bottom: 5%;
 }
@@ -136,13 +136,18 @@ body {
 .background-q {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   height: 100vh;
   width: 100vw;
   background-image: url("/img/quiz-back.png");
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 20px;
+}
+
+.background-q h6{
+  margin-top: 100px;
+  font-size: 25px;
 }
 
 .quiz-form {
@@ -233,7 +238,6 @@ body {
   font-size: 60px;
   font-style: normal;
   font-weight: 500;
-  padding-top: 180px;
 }
 
 .auswertung-text {

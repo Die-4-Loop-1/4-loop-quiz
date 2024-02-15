@@ -79,26 +79,10 @@ session_destroy();
                     <div class="form-floatin">
                         <input type="submit" class="btn btn-success" value="Quiz Starten">
                     </div>
-            </form>
-        </div>
-
-
-        <!-- <audio src="./audio/hero.wav"></audio> -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<!-- <script>
-        var audio = new Audio('./audio/hero.wav');
-  var UserInteracted = setInterval(()=>{
-    audio.play()
-    .then(()=>{
-      clearInterval(UserInteracted);
-    })
-    .catch(()=>{
-      console.log("waiting for user interaction to play first notification")
-    });     
-  },100)
-</script> -->
-
-    
+            </form> 
+            
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

@@ -79,6 +79,7 @@ $message = getMessage($points, $totalPoints);
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- <script src="assets/js/main.js"></script> -->
     <link rel="stylesheet" href="./assets//css//talhaStyles.css">
     <script src="assets/js/main.js"></script>
 
@@ -93,6 +94,18 @@ $message = getMessage($points, $totalPoints);
 
     $totalPoints = 0;
     $maxTotalPoints = 1;
+
+//  <form class="form" action="index.php">
+//     <button class="form__btn">RESTART</button>
+// </form> 
+<?php 
+    /*
+    Betimme die Anzahl der ereichten Punkte. Dazu wird das 'value' -Attribut der Eingabefelder ausgewertet.
+    
+    Wichtig: Sämtliche $_SESSION-werte müssen fertig gesetzt sein. bevor die Punktzahlen gesammelt werden dürfen.*/
+
+    $totalPoints = 0;
+    $maxTotalPoints = 0;
 
     foreach ($_SESSION as $questionKey =>  $data) {
         if (str_contains($questionKey, 'question-')){
