@@ -36,7 +36,7 @@
     <div class="q-canvas">
         <div class="q-container">
             <div class="ball"></div>
-            <div class="shadow"></div>
+            et();    <div class="shadow"></div>
         </div>
     </div>
 
@@ -114,6 +114,13 @@
     <?php 
         // $_SESSION["session-written"] = true;
         // prettyPrint($_SESSION, '$_SESSION');
+
+    for ($i=0; $i < count($answers); $i++) { 
+        $currAnswerId = $_SESSION['quiz']['answerIds']['$questioCounter'][$i];
+        echo('  <label class="form-check-label" for='.$currAnswerId.'>'.$answers[$i].'
+                <input class = form-check-input name = '.$currAnswerId.' type='.$type.' value = '.$currAnswerId.'>
+                </label>');
+    }
     ?>
     <script>// erstellt von Andreas
 
@@ -154,6 +161,10 @@
     }, 10000);
     </script>
 
+     
+<label class="form-check-label" for="$id">
+    <input class = form-check-input name = $id type="$type" value = $id>
+</label>
 </body>
 
 </html>
