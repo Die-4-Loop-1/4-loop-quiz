@@ -1,21 +1,19 @@
 
 <?php
 
-function prettyERPrint($stuff) {
+function prettyPrint($stuff) {
     echo ('<pre>');
     print_r($stuff);
     echo ('</pre>');
 }
 
-
-$image = imagecreatefromjpeg('wikiImgs/wikiPic.jpg');
-$resolution = 100;
+emptyFolder('cutterImgs/');
+$image = imagecreatefromjpeg('wikiImgs/resizedWikiPic.jpg');
 $width = imagesx($image);
 $height = imagesy($image);
-
-prettyERPrint($width);
-// list($width, $height) = getimagesize($image);
 $aspectRatio = $width / $height;
+$actualRes = $width * $height;
+$resolution = 50;
 $hIndex = ceil($height / ($resolution / $aspectRatio));
 $wIndex = ceil($width / $resolution);
 $imgCounter = 0;
@@ -26,32 +24,34 @@ for ($i=0; $i < $height / $hIndex; $i++) {
     for ($j=0; $j < $width / $wIndex; $j++) {
         $area = ['x' => $wIndex * $j, 'y' => $hIndex * $i, 'width' => $wIndex, 'height' => $hIndex];
         
-         // Crop the image
+            // Crop the image
             $croppedImage = imagecrop($image, $area);
+            $filename = $outputDirectory . 'pix' . $imgCounter . '.jpg';
             
-            if ($croppedImage !== false) {
-                // Store the cropped image in the array
-                
-                // $images[] = $croppedImage;
-                $filename = $outputDirectory . 'pix' . $imgCounter . '.jpg';
-                $filenames[] = $filename;
-                // Save the cropped image as JPEG to the specified filename
-                imagejpeg($croppedImage, $filename);
+            // Save the cropped image as JPEG to the specified filename
+            imagejpeg($croppedImage, $filename);
 
-                // Free up memory
-                imagedestroy($croppedImage);
-            }
+            $filenames[] = $filename;
+            imagedestroy($croppedImage);
             $imgCounter++;
+            
         }
  }
  
-$jsonImages = json_encode($image);
 
-$jsonFilenames = json_encode($filenames);
-echo("<script> let images = " . $jsonFilenames . "</script>");
-echo("<script> let resolution = " . $resolution . "</script>");
 
-$imgs = json_encode(scandir($outputDirectory));
+// $jsonFilenames = json_encode($filenames);
+// prettyPrint($jsonFilenames);
+echo ("<script> 
+let haveImage = " . json_encode($haveImage) . ";
+console.log(haveImage);
+let images = " . json_encode($filenames) . "; 
+let resolution = " . json_encode($actualRes) . ";
+let imgCounter = " . json_encode($imgCounter) . ";
+let countdown = " . 10 . ";
+</script>");
+
+// $imgs = json_encode(scandir($outputDirectory));
 ?>
 
 <!DOCTYPE html>
@@ -62,22 +62,59 @@ $imgs = json_encode(scandir($outputDirectory));
     <title>Document</title>
 <style>
     body {
-        background-color: black;
+        background-color: grey;
     }
-    img {
-            display: inline-block;
-            max-width: 100%; 
-            height: auto; 
-        }
-        #imageContainer {
-            display: flex;
-            flex-wrap: wrap;
-            position: absolute;
-            top: 10%; /* toDel */
-            left: 10%; /* toDel */
-            width: 400px;
-            /* transform: scale(1.5); */
-        }
+img {
+    display: inline-block;
+    max-width: 100%; 
+    height: auto; 
+    opacity: 0;
+    z-index: 3;
+        
+            
+}
+#imageContainer {
+    
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    background-color: black;
+    /* min-height: 100px; */ /*If you don't want it to grow from zero, uncomment this.*/
+    top: 10%; /* toDel */
+    left: 10%; /* toDel */
+    width: 400px;
+    border: 5px solid #333;
+}
+#imageContainer::after {
+    content: "";
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding: 15px;
+    border: 5px solid #333;
+    background-color: white;
+    z-index: -1; /* Ensure the pseudo-element is behind the container content */
+    
+}
+
+#imageContainer::before {
+    content: "";
+    position: absolute;
+    z-index: 2; 
+    background: 
+        url('data:image/svg+xml;utf8,<svg style="transform:rotate(45deg)" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 60"><text x="0" y="25" fill="%23444"> VisualAid </text></svg>') 
+        0 0/75px 40px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 </style>
 </head>
 <body>
@@ -99,27 +136,17 @@ for (let i = 0; i < images.length; i++) {
     image.src = images[i];
     document.getElementById('imageContainer').appendChild(image);
 }
-
+console.time('bunch up');
 let theWholeBunch = Array.from(document.querySelectorAll('img'));
 let theRandomBunch = shuffle(theWholeBunch);
-
-
-// // Calculate the scale factor based on the desired content width
-// const containerWidth = 400; // Desired width of the container
-// const contentWidth = <?php echo($width); ?>; // Initial width of the content
-// const scaleFactor = containerWidth / contentWidth;
-
-// // Set the scale transform to adjust the content width while keeping the container width fixed
-// theWholeBunch.forEach(img => {
-//     img.style.transform = `scale(${scaleFactor})`;
-// });
-// let onePercentLength = Math.ceil(theRandomBunch.length * 0.01);
-// for (let i = 0; i < 40; i++) {
-//     let partOfTheBunch = theRandomBunch.slice(0, onePercentLength)
-   
-//     partOfTheBunch.forEach(img => {
-//         img.style.opacity = 1;
-//     });
-// }
+let delay = (countdown *1000) / (imgCounter * .6);
+console.timeEnd('bunch up');
+window.onload = function() {
+    for (let i = 0; i < imgCounter; i++) {
+        setTimeout(() => {
+            theRandomBunch[i].style.opacity = 1;
+        }, delay*i)
+    }
+}
 </script>
 </html>
