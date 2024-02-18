@@ -1,4 +1,10 @@
+<script> console.time('page loaded'); </script>
 <?php
+$start = microtime(true);
+//adjust width of imageContainer in pixel
+$containerWidth = 200;
+$countdown = 10;
+$haveImage = false;
    //Session starten
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -20,7 +26,7 @@ if (session_status() == PHP_SESSION_NONE) {
     $questionId = $quiz['questionIds'][$questionCounter];
     $question = getQuestion($questionId, $dbConn);
     $answers = getAnswers($_SESSION['quiz']['answerIds'][$questionCounter], $dbConn);
-    $links = wikinator($questionId, $dbConn);
+    $links = wikinator($questionId, $dbConn, $containerWidth, $haveImage, $countdown);
 // prettyPrint($quiz,'test');
     $type = 'radio';
     if (count($quiz['correctIds'][$questionCounter])>1) {
@@ -34,7 +40,7 @@ if (session_status() == PHP_SESSION_NONE) {
     else {
         $nextPage = 'question.php';
     }
-    prettyPrint($_SESSION['quiz']);
+    // prettyPrint($_SESSION['quiz']);
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -48,7 +54,9 @@ if (session_status() == PHP_SESSION_NONE) {
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/cutterImageContiner.css">
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/cutter.js" defer></script>
 
 </head>
 
@@ -66,9 +74,11 @@ if (session_status() == PHP_SESSION_NONE) {
         <div class="col-3" style="text-align: right;">
             <div id="timer" style=" font-weight: bold; color: white; z-index: 1;"></div>
         </div>
-
+        
         <div class="quiz-form">
 <form  method="post" action = "<?php echo $nextPage; ?>">
+
+
 
 <?php
     
@@ -78,7 +88,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <input class = form-check-inputw" id="answers'.$i.'" name = "answers[]" type='.$type.' value = '.$currAnswerId.'>
                 </label>');
     }
-    
+  
 ?>
 <!-- <input type="hidden" id="questionNum" name="questionNum" value="<?php echo $quiz["questionNum"]; ?>">
 <input type="hidden" id="lastQuestionIndex" name="lastQuestionIndex" value="<?php echo $currentQuestionIndex; ?>">
@@ -88,15 +98,21 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 <div class="quiz-form-floating">
+
         <button type="submit" class="btn btn-success">Nächste Frage</button>
 </div> 
+<div style="width: <?php echo($containerWidth); ?>;" id="imageContainer"></div> <!--move where needed, adjust width at the top-->
 </form>
 </div>    
 </div>
+
+
+
 <?php
 echo("<script>
         let urls = " . json_encode($links) . ";
     </script>");
+    logger(); // comment or delete this line to remove the logging call
 ?>
 
 
