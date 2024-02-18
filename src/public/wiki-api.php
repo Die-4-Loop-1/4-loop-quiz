@@ -1,38 +1,11 @@
 <?PHP
 include 'includes/db.php';
 
-function emptyFolder($directory) {
-    $files = scandir($directory);
-    foreach ($files as $file) {
-        if ($file != '.' && $file != '..') {
-            unlink($directory . $file);
-        }
-}
-}
-
-function compareByLength($a, $b) {
-    return strlen($b) - strlen($a);
-}
-
-function logger() {
-    // sleep(15);
-    echo "Get rid of logging by comment/delete logger functioncall in questions.php at the bottom. Line 114<br><br>";
-    global $wikiExecutionTime, $getLink, $timeToStartCutting, $cutting, $jsLink;
-    echo "Execution time Wiki-api: " . $wikiExecutionTime . " seconds<br>";
-    $i = 1;
-    foreach ($getLink as $link) {
-        echo "Execution time Link ".$i.": " . $link . " seconds<br>";
-        $i++;
-    }
-    echo "Time to start cutting: " . $timeToStartCutting . " seconds<br>";
-    echo "Execution time cutting: " . $cutting . " seconds<br>";
-    echo "Execution time js-link: " . $jsLink . " seconds<br><br><br>";
-}
 
 //for current question
 //generates links to wikipedia for correct answers.
 //calls cutter if valid picture is found. 
-function wikinator($id, $dbConn, $containerWidth, $haveImage, $countdown) {
+function wikinator($id, $dbConn, $containerWidth) {
     $startWikiApi = microtime(true);
     $data = $dbConn->query("SELECT * FROM `questions` JOIN `answers` ON questions.question_id = answers.question_id 
     WHERE questions.question_id = $id AND answers.is_correct = 1")->fetchAll(PDO::FETCH_ASSOC);
@@ -53,7 +26,7 @@ function wikinator($id, $dbConn, $containerWidth, $haveImage, $countdown) {
         if (!$toggle) {
             $toggle = 1;
             $GLOBALS['startGetPicture'] = microtime(true);
-            getPicture($link, $language, $containerWidth, $countdown);
+            getPicture($link, $language, $containerWidth);
         }
         
         $voila[$id] = $link;
@@ -96,8 +69,9 @@ function getWikiLink($searchString, $language) {
     }     
 }
 
-
-function getPicture($link, $language, $containerWidth, $countdown) {
+//gets pictures and starts cutter, still funky when multiple found
+function getPicture($link, $language, $containerWidth) {
+    global $haveImage;
     emptyFolder('wikiImgs/');
     $parts = explode("/", $link);
     $lastString = end($parts);
@@ -151,14 +125,11 @@ function getPicture($link, $language, $containerWidth, $countdown) {
 
                     // Save the resized image to a file
                     imagejpeg($resized_image, 'wikiImgs/resizedWikiPic.jpg');
-
+                    include 'cutter.php';
                     // Free up memory
                     imagedestroy($source_image);
-                    imagedestroy($resized_image);
-                    include 'cutter.php';
+                    imagedestroy($resized_image); 
                 }
-                
-                
         }
     }       
 }
@@ -166,6 +137,33 @@ function getPicture($link, $language, $containerWidth, $countdown) {
 // getPicture($link, $language, $containerWidth);
 }
 
+function emptyFolder($directory) {
+    $files = scandir($directory);
+    foreach ($files as $file) {
+        if ($file != '.' && $file != '..') {
+            unlink($directory . $file);
+        }
+}
+}
 
+function compareByLength($a, $b) {
+    return strlen($b) - strlen($a);
+}
+
+function logger() {
+    // sleep(15);
+    echo "Get rid of logging by comment/delete logger functioncall in questions.php at the bottom. ca. line 132<br><br>";
+    global $wikiExecutionTime, $getLink, $timeToStartCutting, $cutting, $jsLink, $totalTime;
+    echo "Execution time Wiki-api: " . $wikiExecutionTime . " seconds<br>";
+    $i = 1;
+    foreach ($getLink as $link) {
+        echo "Execution time Link ".$i.": " . $link . " seconds<br>";
+        $i++;
+    }
+    echo "Time to start cutting: " . $timeToStartCutting . " seconds<br>";
+    echo "Execution time cutting: " . $cutting . " seconds<br>";
+    echo "Execution time js-link: " . $jsLink . " seconds<br>";
+    echo "Execution time Page: " . $totalTime . " seconds<br><br><br>";
+}
 
 ?>

@@ -14,7 +14,6 @@
     position: relative;
     background-color: black;
     /* min-height: 100px; */ /*If you don't want it to grow from zero, uncomment this.*/
-    
     border: 5px solid #333;
     z-index: 3;
 }
@@ -41,6 +40,7 @@
     position: absolute;
     z-index: 3; 
     background: 
+    /* background image as placeholder while timer counts down. */
         url('data:image/svg+xml;utf8,<svg style="transform:rotate(45deg)" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 60"><text x="0" y="25" fill="%23444"> VisualAid </text></svg>') 
         0 0/75px 40px;
     width: 100%;

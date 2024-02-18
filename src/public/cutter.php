@@ -1,7 +1,8 @@
 <?php
 // Resolution refers to the number of pictures generated to fill one horizontal row. 
-// Please adjust it carefully, as Opportunity Laptops may experience performance issues aka crashing.  
-$resolution = 100;
+// Please adjust it carefully, as Opportunity Laptops may experience performance issues aka crashing.
+$resolution = 80;
+
 $startCutter = microtime(true);
 emptyFolder('cutterImgs/');
 $startCutting = microtime(true);
@@ -10,7 +11,7 @@ $image = imagecreatefromjpeg('wikiImgs/resizedWikiPic.jpg');
 $width = imagesx($image);
 $height = imagesy($image);
 $aspectRatio = $width / $height;
-$actualRes = $width * $height;
+$GLOBALS['actualRes'] = $width * $height;
 $hIndex = ceil($height / ($resolution / $aspectRatio));
 $wIndex = ceil($width / $resolution);
 $imgCounter = 0;
@@ -37,19 +38,21 @@ for ($i=0; $i < floor($height / $hIndex); $i++) {
             }
         }
 }
+$GLOBALS['imgCounter'] = $imgCounter;
+$GLOBALS['filenames'] = $filenames;
 $endCutting = microtime(true);
 $GLOBALS['cutting'] = round($endCutting - $startCutting, 2);
 // $filenames = array_slice(scandir('cutterImgs/'), 2);
 
 $startJsLink = microtime(true);
-echo ("<script> 
-let haveImage = " . json_encode($haveImage) . ";
-console.log(haveImage);
-let images = " . json_encode($filenames) . "; 
-let resolution = " . json_encode($actualRes) . ";
-let imgCounter = " . json_encode($imgCounter) . ";
-let countdown = " . json_encode($countdown) . ";
-</script>");
+// echo ("<script> 
+// let haveImage = " . json_encode($haveImage) . ";
+// console.log(haveImage);
+// let images = " . json_encode($filenames) . "; 
+// let resolution = " . json_encode($actualRes) . ";
+// let imgCounter = " . json_encode($imgCounter) . ";
+// let countdown = " . json_encode($countdown) . ";
+// </script>");
 $endJsLink = microtime(true);
 $GLOBALS['jsLink'] = round($endJsLink - $startJsLink, 2);
 ?>

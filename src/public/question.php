@@ -1,10 +1,14 @@
+
 <script> console.time('page loaded'); </script>
+<!DOCTYPE html>
 <?php
 $start = microtime(true);
+
 //adjust width of imageContainer in pixel
-$containerWidth = 200;
+$containerWidth = 400;
 $countdown = 10;
 $haveImage = false;
+
    //Session starten
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -26,7 +30,7 @@ if (session_status() == PHP_SESSION_NONE) {
     $questionId = $quiz['questionIds'][$questionCounter];
     $question = getQuestion($questionId, $dbConn);
     $answers = getAnswers($_SESSION['quiz']['answerIds'][$questionCounter], $dbConn);
-    $links = wikinator($questionId, $dbConn, $containerWidth, $haveImage, $countdown);
+    $links = wikinator($questionId, $dbConn, $containerWidth);
 // prettyPrint($quiz,'test');
     $type = 'radio';
     if (count($quiz['correctIds'][$questionCounter])>1) {
@@ -42,7 +46,7 @@ if (session_status() == PHP_SESSION_NONE) {
     }
     // prettyPrint($_SESSION['quiz']);
 ?>
-<!DOCTYPE html>
+
 <html lang="de">
 
 <head>
@@ -55,8 +59,9 @@ if (session_status() == PHP_SESSION_NONE) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/cutterImageContiner.css">
-    <script src="assets/js/main.js" defer></script>
     <script src="assets/js/cutter.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    
 
 </head>
 
@@ -90,12 +95,6 @@ if (session_status() == PHP_SESSION_NONE) {
     }
   
 ?>
-<!-- <input type="hidden" id="questionNum" name="questionNum" value="<?php echo $quiz["questionNum"]; ?>">
-<input type="hidden" id="lastQuestionIndex" name="lastQuestionIndex" value="<?php echo $currentQuestionIndex; ?>">
-<input type="hidden" id="multipleChoice" name="multipleChoice" value="<?php echo $multipleChoice ? 'true':'false'; ?>">
-<input type="hidden" id="maxPoints" name="maxPoints" value="<?php echo $maxPoints; ?>">
-<input type="hidden" id="indexStep" name="indexStep" value="1"> -->
-
 
 <div class="quiz-form-floating">
 
@@ -108,14 +107,28 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 
+
+
 <?php
-echo("<script>
+    echo("<script>
         let urls = " . json_encode($links) . ";
-    </script>");
-    logger(); // comment or delete this line to remove the logging call
+        </script>");
 ?>
+
+<script> 
+    let haveImage = <?php echo json_encode($haveImage); ?>;
+    // console.log(haveImage);
+    let images = <?php echo json_encode($filenames); ?>; 
+    let resolution = <?php echo json_encode($actualRes); ?>;
+    let imgCounter = <?php echo json_encode($imgCounter); ?>;
+    let countdown = <?php echo json_encode($countdown); ?>;
+</script>
 
 
 </body>
-
+<?php
+$end = microtime(true);
+$totalTime = $end - $start;
+logger(); // comment or delete this line to remove the logging call
+?>
 </html>
