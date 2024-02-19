@@ -26,6 +26,14 @@ if (haveImage) {
     
     //loop throu all imgs to dispaly them. just one time, Danke Ray
     window.onload = function() {
+        if (haveImage) {
+            let con = document.getElementById('imageContainer');
+            con.style.display = "flex";
+        }
+        else {
+            let con = document.getElementById('xxx')
+            con.style.display = "block";
+        }
         console.timeEnd('page loaded');
         for (let i = 0; i < imgCounter+1; i++) {
             setTimeout(() => {
@@ -34,3 +42,5 @@ if (haveImage) {
         }
     }
 }
+
+

@@ -8,7 +8,7 @@
 
 #imageContainer {
     box-sizing: content-box;
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     margin: auto;
     position: relative;
@@ -48,4 +48,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.outerCon {
+    display: flex;
+    flex-direction: column;
 }

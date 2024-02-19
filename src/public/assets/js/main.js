@@ -1,3 +1,5 @@
+
+
 let time = 10;
 
 function updateTimer() {

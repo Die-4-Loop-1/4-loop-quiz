@@ -348,3 +348,8 @@ body {
     height: 35px;
   }
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
