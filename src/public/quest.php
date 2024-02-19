@@ -28,9 +28,7 @@
 
         //holle alle datenfelder zur Frage mit $id von der DB
         $question = fetchQuestionById($id, $dbConnection);
-        
-        // //DEVONLY
-        // prettyPrint($question, "Question");
+ 
          
     ?>
     <div class="q-canvas">
@@ -112,8 +110,7 @@
         </div>    
     </div>
     <?php 
-        // $_SESSION["session-written"] = true;
-        // prettyPrint($_SESSION, '$_SESSION');
+
 
     for ($i=0; $i < count($answers); $i++) { 
         $currAnswerId = $_SESSION['quiz']['answerIds']['$questioCounter'][$i];

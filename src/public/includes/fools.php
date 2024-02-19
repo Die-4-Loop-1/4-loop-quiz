@@ -12,6 +12,8 @@ function generateQuiz($topic, $count, $dbConn) {
     $questionIds = $query->fetchAll(PDO::FETCH_COLUMN);
     // prettyPrint($questionIds);
 
+    $_SESSION['userAnswers'] = [];
+
     foreach ($questionIds as $id) {
         $query = $dbConn->prepare("SELECT `id` FROM answers WHERE `question_id` = $id ORDER BY RAND()");
         $query->execute();
@@ -20,13 +22,11 @@ function generateQuiz($topic, $count, $dbConn) {
         $query->execute();
         $correctId[] = $query->fetchAll(PDO::FETCH_COLUMN);
 
-        // prettyPrint($questionIds);
-        // prettyPrint($answerIds);
-        // prettyPrint($correctId);
 
-        //set userAnswers array
-        $_SESSION['userAnswers'] = [];
-    }
+    //set userAnswers array
+    
+
+    }   
     return [
         'questionIds' => $questionIds,
         'answerIds'   => $answerIds,

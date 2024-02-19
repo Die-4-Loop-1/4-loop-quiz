@@ -60,6 +60,6 @@ setTimeout(function() {
     // füge die erstellen Anchor Tags in den Container ein
     urlContainer.appendChild(link);
 }
-}, 10000);
+}, 6500);
 
 
