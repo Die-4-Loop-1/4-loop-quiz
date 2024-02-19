@@ -3,7 +3,7 @@ session_start();
 session_unset();
 session_destroy();
 // include "./includes/collector.php"; // Muss zuerst sein wegen Start _SESSION()
-    // phpinfo();
+// phpinfo();
 
 // echo get_include_path();
 //  include './includes/db.php';
@@ -58,18 +58,16 @@ session_destroy();
                     <div class="animated-top" id="a5">Chuck Norris</div>
                     <div class="animated-top" id="a6">Tiere</div>
                     <div class="animated-top" id="a7">Geography</div>
-                    <div class="animated-top" id="a9">Astronomie</div>
-                    <div class="animated-top" id="a10">History</div>
-                    <div class="animated-top" id="a11">Werkzeuge</div>
+                    <div class="animated-top" id="a8">Astronomie</div>
+                    <div class="animated-top" id="a9">History</div>
+                    <div class="animated-top" id="a10">Werkzeuge</div>
 
                 </div>
                 <div class="form-floatin">
                     <div class="mb-3">
                         <label for="questionNum" class="form-label">Wie viele Fragen möchten Sie beantworten</label>
-                        <input type="number" class="form-control" id="questionNum" placeholder="Geben Sie eine Zahl ein"
-                        name="questionNum" 
-                        min="2" max="40" value="10">
-                    </div> 
+                        <input type="number" class="form-control" id="questionNum" placeholder="Geben Sie eine Zahl ein" name="questionNum" min="2" max="40" value="10">
+                    </div>
 
                     <!-- lastQuestionIndex: mit PHP gesetzt -->
                     <input type="hidden" id="lastQuestionIndex" name="lastQuestionIndex" value="-1">
@@ -79,11 +77,14 @@ session_destroy();
                     <div class="form-floatin">
                         <input type="submit" class="btn btn-success" value="Quiz Starten">
                     </div>
-            </form> 
-            
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
+            </form>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <audio >
+            <source src="./audio/hero.wav" >
+        </audio>
+    </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const wordsArray = ["Tech", "Tierwelt", "Animals", "Chuck Norris", "tiere", "Geography", "Astronomie", "history", "Werkzeuge", "Cinema"];
@@ -91,10 +92,8 @@ session_destroy();
         let currentIndex = 0;
         let rotationInterval;
         const audio = document.querySelector("audio");
-        // audio.volume = 1;
-        // audio.play();
-
-
+        audio.volume = 1;
+        audio.play();
 
         function rotateWords() {
             wordDisplay.textContent = wordsArray[currentIndex];
@@ -113,8 +112,8 @@ session_destroy();
             rotateWords(); // Rotate immediately when the page loads
             rotationInterval = setInterval(function() {
                 rotateWords(); // Rotate words
-            }, 455); // Change word every 45.5 moiiseconds after the initial delay
-        }, 4000);;
+            }, 700); // Change word every 45.5 moiiseconds after the initial delay
+        }, 2000);;
 
     });
 </script>
