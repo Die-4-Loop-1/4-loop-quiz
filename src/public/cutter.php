@@ -1,7 +1,7 @@
 <?php
 // Resolution refers to the number of pictures generated to fill one horizontal row. 
 // Please adjust it carefully, as Opportunity Laptops may experience performance issues aka crashing.
-$resolution = 80;
+$resolution = 40;
 
 $startCutter = microtime(true);
 emptyFolder('cutterImgs/');
@@ -12,6 +12,7 @@ $width = imagesx($image);
 $height = imagesy($image);
 $aspectRatio = $width / $height;
 $GLOBALS['actualRes'] = $width * $height;
+$actualRes = $width * $height;
 $hIndex = ceil($height / ($resolution / $aspectRatio));
 $wIndex = ceil($width / $resolution);
 $imgCounter = 0;

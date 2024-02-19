@@ -28,7 +28,7 @@ label {
   color: white;
   font-weight: 900;
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   font-size: medium;
   text-align: center;
   border-radius: 3px;
@@ -41,102 +41,102 @@ label {
   font-size: xx-large;
 }
 
-#a10 {
-  animation-name: a10;
-  animation-duration: 3s;
-  animation-timing-function: ease-out;
+#a2 {
+  animation-name: a2;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
   animation-direction: reverse;
-  animation-delay: 3.75s;
+  animation-delay: 1s;
   color: red;
 }
 
-#a2 {
-  animation-name: a2;
-  animation-timing-function: ease-out;
-  animation-duration: 4s;
-  animation-delay: 1.25s;
+#a3 {
+  animation-name: a3;
+  animation-timing-function: ease-in-out;
+  animation-duration: 2s;
+  animation-delay: 1.7s;
   animation-direction: reverse;
   animation-iteration-count: 1;
   color: yellow;
 }
 
-#a3 {
-  animation-name: a3;
-  animation-timing-function: ease-out;
-  animation-duration: 3s;
-  animation-delay: 1.5s;
+#a4 {
+  animation-name: a4;
+  animation-timing-function: ease-in-out;
+  animation-duration: 2s;
+  animation-delay: 2.4s;
   animation-direction: reverse;
   animation-iteration-count: 1;
   color: blue;
 }
 
-#a4 {
-  animation-name: a4;
-  animation-timing-function: ease-out;
-  animation-duration: 3s;
-  animation-delay: 1.75s;
+#a5 {
+  animation-name: a5;
+  animation-timing-function: ease-in-out;
+  animation-duration: 2s;
+  animation-delay: 3.1s;
   animation-direction: reverse;
   animation-iteration-count: 1;
   color: purple;
 }
 
-#a5 {
-  animation-name: a5;
-  animation-timing-function: ease-out;
-  animation-duration: 4s;
-  animation-delay: 2s;
+#a6 {
+  animation-name: a6;
+  animation-timing-function: ease-in-out;
+  animation-duration: 2s;
+  animation-delay: 3.8s;
   animation-direction: reverse;
   animation-iteration-count: 1;
   color: pink;
 }
 
-#a6 {
-  animation-name: a6;
-  animation-duration: 2.5s;
-  animation-timing-function: ease-out;
-  animation-direction: reverse;
-  animation-iteration-count: 1;
-  animation-delay: 2.25s;
-  color: orange;
-}
-
 #a7 {
   animation-name: a7;
-  animation-duration: 2.5s;
-  animation-timing-function: ease-out;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
   animation-direction: reverse;
   animation-iteration-count: 1;
-  animation-delay: 4.75s;
-  color: aqua;
+  animation-delay: 4.5s;
+  color: orange;
 }
 
 #a8 {
   animation-name: a8;
-  animation-duration: 2.5s;
-  animation-timing-function: ease-out;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
   animation-direction: reverse;
   animation-iteration-count: 1;
-  animation-delay: 5.25s;
-  color: fuchsia;
+  animation-delay: 5.2s;
+  color: aqua;
 }
 
 #a9 {
   animation-name: a9;
   animation-duration: 2s;
-  animation-timing-function: ease-out;
+  animation-timing-function: ease-in-out;
   animation-direction: reverse;
   animation-iteration-count: 1;
-  animation-delay: 5.75;
-  color:plum
+  animation-delay: 5.9s;
+  color: fuchsia;
+}
+
+#a10 {
+  animation-name: a10;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-direction: reverse;
+  animation-iteration-count: 1;
+  animation-delay: 6.5s;
+  color: plum;
 }
 
 #a1 {
   animation-name: a1;
-  animation-duration: 2.2s;
+  animation-duration: 2s;
   animation-timing-function: ease-in-out;
   animation-direction: reverse;
   animation-iteration-count: 1;
-  animation-delay: 6s;
+  animation-delay: 6.7s;
   color: gold;
 }
 
@@ -166,7 +166,8 @@ label {
     transform: rotate(360deg);
     font-size: medium;
     left: 50vw;
-    top: 74vh;
+    top: 72vh;
+    z-index: 1;
   }
   25% {
     -webkit-text-stroke: 1px #36454f;
@@ -191,7 +192,8 @@ label {
     transform: rotate(360deg);
     font-size: medium;
     right: 50vw;
-    top: 74vh;
+    top: 72vh;
+    z-index: 0;
   }
   25% {
     -webkit-text-stroke: 1px #36454f;
@@ -217,7 +219,8 @@ label {
     transform: rotate(360deg);
     font-size: medium;
     right: 50vw;
-    top: 74vh;
+    top: 72vh;
+    z-index: 1;
   }
   25% {
     -webkit-text-stroke: 1px #36454f;
@@ -243,7 +246,8 @@ label {
     transform: rotate(360deg);
     font-size: medium;
     right: 50vw;
-    top: 74vh;
+    top: 72vh;
+    z-index: 0;
   }
   25% {
     -webkit-text-stroke: 1px #36454f;
@@ -269,7 +273,8 @@ label {
     transform: rotate(360deg);
     font-size: medium;
     right: 50vw;
-    top: 74vh;
+    top: 72vh;
+    z-index: 1;
   }
   25% {
     -webkit-text-stroke: 1px #36454f;
@@ -294,7 +299,8 @@ label {
     transform: rotate(360deg);
     font-size: medium;
     left: 50vw;
-    top: 74vh;
+    top: 72vh;
+    z-index: 1;
   }
   25% {
     -webkit-text-stroke: 1px #36454f;
@@ -320,7 +326,8 @@ label {
     transform: rotate(360deg);
     font-size: medium;
     left: 50vw;
-    top: 74vh;
+    top: 72vh;
+    z-index: 1;
   }
   25% {
     -webkit-text-stroke: 1px #36454f;
@@ -346,7 +353,8 @@ label {
     transform: rotate(360deg);
     font-size: medium;
     right: 50vw;
-    top: 74vh;
+    top: 72vh;
+    z-index: 1;
   }
   25% {
     -webkit-text-stroke: 1px #36454f;
@@ -371,7 +379,8 @@ label {
     transform: rotate(360deg);
     font-size: medium;
     right: 50vw;
-    top: 74vh;
+    top: 72vh;
+    z-index: 1;
   }
   25% {
     -webkit-text-stroke: 1px #36454f;
@@ -397,7 +406,8 @@ label {
     transform: rotate(360deg);
     font-size: medium;
     right: 50vw;
-    top: 74vh;
+    top: 72vh;
+    z-index: 1;
   }
   25% {
     -webkit-text-stroke: 1px #36454f;
@@ -418,30 +428,7 @@ label {
   }
 }
 
-@keyframes a11 {
-  0% {
-    transform: rotate(360deg);
-    font-size: medium;
-    right: 50vw;
-    top: 74vh;
-  }
-  25% {
-    -webkit-text-stroke: 1px #36454f;
-    transform: rotate(0deg);
-    opacity: 100%;
-  }
-  50% {
-    font-size: XX-large;
-    right: 50vw;
-    top: 400px;
-  }
-  100% {
-    opacity: 100%;
-    font-size: 600px;
-    right: 50vw;
-    top: 400px;
-  }
-}
+
 
 @media screen and (max-width: 960px) {
   @keyframes a1 {
@@ -450,7 +437,8 @@ label {
       opacity: 0%;
       font-size: medium;
       left: 50vw;
-      top: 50vh;
+      top: 52vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -475,7 +463,8 @@ label {
       opacity: 0%;
       font-size: medium;
       right: 50vw;
-      top: 50vh;
+      top: 52vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -501,7 +490,8 @@ label {
       opacity: 0%;
       font-size: medium;
       right: 50vw;
-      top: 50vh;
+      top: 52vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -527,7 +517,8 @@ label {
       opacity: 0%;
       font-size: medium;
       right: 50vw;
-      top: 50vh;
+      top: 52vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -553,7 +544,8 @@ label {
       opacity: 0%;
       font-size: medium;
       right: 50vw;
-      top: 50vh;
+      top: 52vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -578,7 +570,8 @@ label {
       opacity: 0%;
       font-size: medium;
       left: 50vw;
-      top: 50vh;
+      top: 52vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -605,6 +598,7 @@ label {
       font-size: medium;
       left: 50vw;
       top: 50vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -630,7 +624,8 @@ label {
       opacity: 0%;
       font-size: medium;
       right: 50vw;
-      top: 50vh;
+      top: 5vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -655,7 +650,8 @@ label {
       opacity: 0%;
       font-size: medium;
       right: 50vw;
-      top: 50vh;
+      top: 54vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -681,7 +677,8 @@ label {
       opacity: 0%;
       font-size: medium;
       right: 50vw;
-      top: 50vh;
+      top: 54vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -708,6 +705,7 @@ label {
       font-size: medium;
       right: 50vw;
       top: 50vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -748,6 +746,7 @@ label {
       font-size: medium;
       left: 50vw;
       top: 60vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -773,6 +772,7 @@ label {
       font-size: medium;
       right: 50vw;
       top: 60vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -799,6 +799,7 @@ label {
       font-size: medium;
       right: 50vw;
       top: 60vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -825,6 +826,7 @@ label {
       font-size: medium;
       right: 50vw;
       top: 60vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px b#36454f;
@@ -851,6 +853,7 @@ label {
       font-size: medium;
       right: 50vw;
       top: 60vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -876,6 +879,7 @@ label {
       font-size: medium;
       left: 50vw;
       top: 60vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -902,6 +906,7 @@ label {
       font-size: medium;
       left: 50vw;
       top: 60vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -928,6 +933,7 @@ label {
       font-size: medium;
       right: 50vw;
       top: 60vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -953,6 +959,7 @@ label {
       font-size: medium;
       right: 50vw;
       top: 60vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -979,6 +986,7 @@ label {
       font-size: medium;
       right: 50vw;
       top: 60vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;
@@ -1005,6 +1013,7 @@ label {
       font-size: medium;
       right: 50vw;
       top: 60vh;
+      z-index: 1;
     }
     25% {
       -webkit-text-stroke: 1px #36454f;

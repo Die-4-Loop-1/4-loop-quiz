@@ -1,6 +1,6 @@
-
-<script> console.time('page loaded'); </script>
 <!DOCTYPE html>
+<script> console.time('page loaded'); </script>
+
 <?php
 $start = microtime(true);
 
@@ -59,6 +59,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/cutterImageContiner.css">
+    <link rel="stylesheet" href="assets/css/q-annim.css">
     <script src="assets/js/cutter.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     
@@ -100,7 +101,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
         <button type="submit" class="btn btn-success">Nächste Frage</button>
 </div> 
-<div style="width: <?php echo($containerWidth); ?>;" id="imageContainer"></div> <!--move where needed, adjust width at the top-->
+<div style="width: <?php echo($containerWidth).'px'; ?>;" id="imageContainer"></div> <!--move where needed, adjust width at the top-->
 </form>
 </div>    
 </div>
