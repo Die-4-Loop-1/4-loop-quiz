@@ -13,7 +13,7 @@ $resolution = 100;
 $width = imagesx($image);
 $height = imagesy($image);
 
-prettyERPrint($width);
+
 // list($width, $height) = getimagesize($image);
 $aspectRatio = $width / $height;
 $hIndex = ceil($height / ($resolution / $aspectRatio));

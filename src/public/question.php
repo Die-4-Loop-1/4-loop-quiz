@@ -15,13 +15,15 @@ if (session_status() == PHP_SESSION_NONE) {
     }
     include "./includes/collector.php";
     include 'wiki-api.php';
+    
+
 
     $quiz = $_SESSION['quiz'];
     $questionId = $quiz['questionIds'][$questionCounter];
     $question = getQuestion($questionId, $dbConn);
     $answers = getAnswers($_SESSION['quiz']['answerIds'][$questionCounter], $dbConn);
     $links = wikinator($questionId, $dbConn);
-// prettyPrint($quiz,'test');
+
     $type = 'radio';
     if (count($quiz['correctIds'][$questionCounter])>1) {
         //Multiple-Choice
@@ -34,7 +36,7 @@ if (session_status() == PHP_SESSION_NONE) {
     else {
         $nextPage = 'question.php';
     }
-    prettyPrint($_SESSION['quiz']);
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -78,7 +80,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <input class = form-check-inputw" id="answers'.$i.'" name = "answers[]" type='.$type.' value = '.$currAnswerId.'>
                 </label>');
     }
-    
+
 ?>
 <!-- <input type="hidden" id="questionNum" name="questionNum" value="<?php echo $quiz["questionNum"]; ?>">
 <input type="hidden" id="lastQuestionIndex" name="lastQuestionIndex" value="<?php echo $currentQuestionIndex; ?>">

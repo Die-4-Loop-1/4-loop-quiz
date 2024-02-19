@@ -33,8 +33,7 @@ function getMessage($points, $totalPoints) {
 
     for ($i=0; $i < count($_SESSION['quiz']['questionIds']); $i++) {
         foreach ($_SESSION['userAnswers'][$i] as $answer) {
-            prettyPrint($answer);
-            prettyPrint($_SESSION['quiz']['correctIds'][$i]);
+
             if (in_array($answer, $_SESSION['quiz']['correctIds'][$i])) {
                 $points +=1;
                 }
