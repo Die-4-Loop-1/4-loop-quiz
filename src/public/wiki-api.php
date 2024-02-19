@@ -3,11 +3,11 @@ include 'includes/db.php';
 
 $maVar = 'Distribute incoming network traffic';
 
-$id = 100;
-$links = wikinator($id, $dbConn);
-prettyPrint($links);
-
-function wikinator($id, $dbConn) {
+//for current question
+//generates links to wikipedia for correct answers.
+//calls cutter if valid picture is found. 
+function wikinator($id, $dbConn, $containerWidth) {
+    $startWikiApi = microtime(true);
     $data = $dbConn->query("SELECT * FROM `questions` JOIN `answers` ON questions.question_id = answers.question_id 
     WHERE questions.question_id = $id AND answers.is_correct = 1")->fetchAll(PDO::FETCH_ASSOC);
 
@@ -42,10 +42,7 @@ function wikinator($id, $dbConn) {
 
 //generate link from correct answer string
 function wiki($answerString, $language) {
-    $correctAnswers = explode(' ', $answerString);
-    usort($correctAnswers, 'compareByLength');
-    prettyPrint($correctAnswers);
-
+    //check whole answer
     $link = getWikiLink($answerString, $language);
     if ($link !== null) {
         return $link;
@@ -66,7 +63,6 @@ function wiki($answerString, $language) {
 //makes a search on Wikipedia. returns first result as link
 function getWikiLink($searchString, $language) {
     $uencAnswer = urlencode($searchString);
-    prettyPrint($uencAnswer);
     $apiUrl = 'https://'.$language.'.wikipedia.org/w/api.php?action=opensearch&search='.$uencAnswer.'&limit=1&namespace=0&format=json';
     $data = json_decode(file_get_contents($apiUrl), true);
     if (isset($data[3][0])) {
@@ -83,7 +79,7 @@ function getPicture($link, $language, $containerWidth) {
     $apiUrl = 'http://'.$language.'.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&pilicense=any&titles='.$lastString;
     $data = json_decode(file_get_contents($apiUrl), true);
     
-    // prettyERPrint($data);
+    
     $picLink = null;
     if (isset($data['query']['pages']) && is_array($data['query']['pages'])) {
         foreach ($data['query']['pages'] as $page) {

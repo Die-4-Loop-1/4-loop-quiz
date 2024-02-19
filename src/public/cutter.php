@@ -10,9 +10,6 @@ $GLOBALS['timeToStartCutting'] = round($startCutting - $startCutter, 2);
 $image = imagecreatefromjpeg('wikiImgs/resizedWikiPic.jpg');
 $width = imagesx($image);
 $height = imagesy($image);
-
-prettyERPrint($width);
-// list($width, $height) = getimagesize($image);
 $aspectRatio = $width / $height;
 $GLOBALS['actualRes'] = $width * $height;
 $actualRes = $width * $height;

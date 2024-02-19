@@ -32,8 +32,6 @@ if (session_status() == PHP_SESSION_NONE) {
     $questionId = $quiz['questionIds'][$questionCounter];
     $question = getQuestion($questionId, $dbConn);
     $answers = getAnswers($_SESSION['quiz']['answerIds'][$questionCounter], $dbConn);
-
-
     $links = wikinator($questionId, $dbConn, $containerWidth);
 
     $type = 'radio';
