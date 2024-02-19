@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Wenn der Submit leer ist, füge einen leeren Eintrag zum userAnswers-Array hinzu
         $_SESSION['userAnswers'][] = [0];
     } else {
-        // Andernfalls, wenn Antworten vorhanden sind, füge sie zum userAnswers-Array hinzu
+        // Andernfalls, wenn Antworten vorhanden sind, füge sie zum userAnswers-Array hinzu TEST
         $_SESSION['userAnswers'][] = $_POST['answers'];
     }
 };
