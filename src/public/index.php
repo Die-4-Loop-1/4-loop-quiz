@@ -85,7 +85,7 @@ session_destroy();
             <source src="./audio/hero.wav" >
         </audio>
     </body>
-<script>
+    <script>
     document.addEventListener("DOMContentLoaded", function() {
         const wordsArray = ["Tech", "Tierwelt", "Animals", "Chuck Norris", "tiere", "Geography", "Astronomie", "history", "Werkzeuge", "Cinema"];
         const wordDisplay = document.getElementById("rotating");
@@ -95,6 +95,8 @@ session_destroy();
         audio.volume = 1;
         audio.play();
 
+
+
         function rotateWords() {
             wordDisplay.textContent = wordsArray[currentIndex];
 
@@ -102,7 +104,6 @@ session_destroy();
                 currentIndex = (currentIndex + 1) % wordsArray.length;
             } else {
                 clearInterval(rotationInterval)
-                // var audio = new Audio('./audio/hero.wav')
             }
 
             ; // Stop rotation after the first cycle
@@ -112,13 +113,15 @@ session_destroy();
             rotateWords(); // Rotate immediately when the page loads
             rotationInterval = setInterval(function() {
                 rotateWords(); // Rotate words
-            }, 700); // Change word every 45.5 moiiseconds after the initial delay
-        }, 2000);;
+            }, 455); // Change word every 45.5 moiiseconds after the initial delay
+        }, 4000);;
 
     });
 </script>
 
 
-
+<audio autoplay>
+        <source src="/audio/hero.mp3" type="audio/mp3">
+    </audio>
 
 </html>

@@ -121,7 +121,10 @@ if ($questionCounter + 1  >= count($quiz['questionIds'])) {
         </div>
     </div>
 
-
+<!-- Add the audio element here without controls -->
+<audio autoplay>
+        <source src="/audio/questions_background_music.mp3" type="audio/mp3">
+</audio>
 
 <script>
    
