@@ -13,7 +13,11 @@ function updateTimer() {
         } else {
             // alert('Zeit abgelaufen!');
             clearInterval(timerInterval);
-
+            nodes = document.getElementsByClassName('form-check-input');
+            inputFields = Array.from(nodes);
+            inputFields.forEach(field => {
+                field.disabled = true;
+            });
             // Hier das Formular automatisch abschicken
             // submitForm();
         }
@@ -23,12 +27,14 @@ function updateTimer() {
     }
 }
 
+const timerInterval = setInterval(updateTimer, 1000);
+
 function submitForm() {
     // Hier den Code einfügen, um das Formular automatisch abzuschicken
     document.forms[0].submit(); // Anpassen, wenn mehrere Formulare auf der Seite vorhanden sind
 }
 
-const timerInterval = setInterval(updateTimer, 1000);
+
 // document.addEventListener('DOMContentLoaded', function() {
 //     const timerInterval = setInterval(updateTimer, 1000);
 // });
@@ -62,6 +68,8 @@ setTimeout(function() {
     // füge die erstellen Anchor Tags in den Container ein
     urlContainer.appendChild(link);
 }
-}, 6500);
+}, 12000);
 
 
+
+    

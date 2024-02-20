@@ -80,7 +80,7 @@ if ($questionCounter + 1  >= count($quiz['questionIds'])) {
             <p><?php echo $question; ?> </p>
         </div>
         <div class="col-3" style="text-align: right;">
-            <div id="timer" style=" font-weight: bold; color: white; z-index: 1;"></div>
+            <div id="timer" style=" padding-bottom:25px; font-weight: bold; font-size: 20px; color: white; z-index: 1;"></div>
         </div>
 
         <div class="outerCon">
@@ -138,14 +138,12 @@ if ($questionCounter + 1  >= count($quiz['questionIds'])) {
 
 </body>
 <?php
-// prettyPrint("haveImage:".$haveImage);
-// echo("haveImage:".$haveImage);
+
 echo("<script> 
 let urls = " . json_encode($links) . ";
 </script>");
 
-// prettyPrint($links);
-// prettyPrint($haveImage);
+
 $end = microtime(true);
 $totalTime = $end - $start;
 /* logger(); */ // comment or delete this line to remove the logging call

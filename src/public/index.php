@@ -102,7 +102,7 @@ session_destroy();
                 currentIndex = (currentIndex + 1) % wordsArray.length;
             } else {
                 clearInterval(rotationInterval)
-                var audio = new Audio('./audio/hero.wav')
+                // var audio = new Audio('./audio/hero.wav')
             }
 
             ; // Stop rotation after the first cycle

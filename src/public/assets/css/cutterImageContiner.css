@@ -10,7 +10,7 @@
     box-sizing: content-box;
     display: none;
     flex-wrap: wrap;
-    margin: auto;
+    /* margin: auto; */
     margin-bottom: 20px;
     position: relative;
     background-color: black;
@@ -53,5 +53,34 @@
 
 .outerCon {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+}
+
+@media (max-width: 900px) {
+    .outerCon{
+        flex-direction: column;
+    }
+    .left {
+        margin: auto;
+    }
+}
+
+.right {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.left {
+    
+}
+
+.btn-success {
+   margin-top: 20px;
+}
+
+
+#timer {
+    
 }

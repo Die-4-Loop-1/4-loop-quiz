@@ -1,11 +1,12 @@
 
 <?php
 
-    include "./includes/collector.php";
        //Session starten
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+include "./includes/collector.php";
     ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -37,9 +38,12 @@ for ($i=0; $i < count($_SESSION['quiz']['questionIds']); $i++) {
             if (in_array($answer, $_SESSION['quiz']['correctIds'][$i])) {
                 $points +=1;
                 }
-            $totalPoints += count($_SESSION['quiz']['correctIds'][$i]);
+                    
         }
+        $totalPoints += count($_SESSION['quiz']['correctIds'][$i]);
+
     }
+    
 ?>
 
 <?php 

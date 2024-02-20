@@ -1,7 +1,7 @@
 <?php
 // Resolution refers to the number of pictures generated to fill one horizontal row. 
 // Please adjust it carefully, as Opportunity Laptops may experience performance issues aka crashing.
-$resolution = 40;
+$resolution = 20;
 $countdown = 10;
 $startCutter = microtime(true);
 emptyFolder('cutterImgs/');
