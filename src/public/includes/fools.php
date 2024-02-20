@@ -47,6 +47,3 @@ function getAnswers($ids, $dbConn){
     }
     return $answers;
 }
-
-
-?>

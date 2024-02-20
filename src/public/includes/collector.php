@@ -15,6 +15,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Andernfalls, wenn Antworten vorhanden sind, füge sie zum userAnswers-Array hinzu TEST
         $_SESSION['userAnswers'][] = $_POST['answers'];
     }
-};
-
-?>
+}

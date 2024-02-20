@@ -1,3 +1,5 @@
+
+
 // Fisher-Yates shuffle algorithm
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -8,7 +10,7 @@ function shuffle(array) {
 }
 
 //fills container with imgs from cutter
-if (haveImage) {
+if (typeof haveImage !== 'undefined') {
     console.time('create img elements');
     for (let i = 0; i < images.length; i++) {
         let image = document.createElement('img');
@@ -26,14 +28,7 @@ if (haveImage) {
     
     //loop throu all imgs to dispaly them. just one time, Danke Ray
     window.onload = function() {
-        if (haveImage) {
-            let con = document.getElementById('imageContainer');
-            con.style.display = "flex";
-        }
-        else {
-            let con = document.getElementById('xxx')
-            con.style.display = "block";
-        }
+        
         console.timeEnd('page loaded');
         for (let i = 0; i < imgCounter+1; i++) {
             setTimeout(() => {
@@ -41,6 +36,17 @@ if (haveImage) {
             }, delay*i)
         }
     }
+}
+
+
+if (typeof haveImage !== 'undefined') {
+    let con = document.getElementById('imageContainer');
+    con.style.display = "flex";
+}
+else {
+    let con = document.getElementById('xxx');
+    con.style.display = "block";
+    console.log('loged')
 }
 
 

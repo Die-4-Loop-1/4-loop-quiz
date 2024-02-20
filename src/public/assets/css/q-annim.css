@@ -1,5 +1,7 @@
-.q-canvas{
+#xxx {
     display: none;
+}
+.q-canvas{
     background-color: transparent;
     height: 100vh;
     width: 100vw;

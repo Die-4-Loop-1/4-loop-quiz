@@ -2,7 +2,7 @@
 // Resolution refers to the number of pictures generated to fill one horizontal row. 
 // Please adjust it carefully, as Opportunity Laptops may experience performance issues aka crashing.
 $resolution = 40;
-
+$countdown = 10;
 $startCutter = microtime(true);
 emptyFolder('cutterImgs/');
 $startCutting = microtime(true);
@@ -46,15 +46,15 @@ $GLOBALS['cutting'] = round($endCutting - $startCutting, 2);
 // $filenames = array_slice(scandir('cutterImgs/'), 2);
 
 $startJsLink = microtime(true);
-// echo ("<script> 
-// let haveImage = " . json_encode($haveImage) . ";
-// console.log(haveImage);
-// let images = " . json_encode($filenames) . "; 
-// let resolution = " . json_encode($actualRes) . ";
-// let imgCounter = " . json_encode($imgCounter) . ";
-// let countdown = " . json_encode($countdown) . ";
-// </script>");
+
+echo ("<script> 
+let haveImage = " . json_encode($haveImage) . ";
+console.log(haveImage);
+let images = " . json_encode($filenames) . "; 
+let resolution = " . json_encode($actualRes) . ";
+let imgCounter = " . json_encode($imgCounter) . ";
+let countdown = " . json_encode($countdown) . ";
+</script>");
 $endJsLink = microtime(true);
 $GLOBALS['jsLink'] = round($endJsLink - $startJsLink, 2);
-?>
 

@@ -1,7 +1,7 @@
 <?PHP
 include 'includes/db.php';
 
-$maVar = 'Distribute incoming network traffic';
+
 
 //for current question
 //generates links to wikipedia for correct answers.
@@ -73,6 +73,7 @@ function getWikiLink($searchString, $language) {
 //gets pictures and starts cutter, still funky when multiple found
 function getPicture($link, $language, $containerWidth) {
     global $haveImage;
+    $haveImage = false;
     emptyFolder('wikiImgs/');
     $parts = explode("/", $link);
     $lastString = end($parts);
@@ -166,5 +167,3 @@ function logger() {
     echo "Execution time js-link: " . $jsLink . " seconds<br>";
     echo "Execution time Page: " . $totalTime . " seconds<br><br><br>";
 }
-
-?>

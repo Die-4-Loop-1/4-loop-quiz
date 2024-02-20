@@ -11,6 +11,7 @@
     display: none;
     flex-wrap: wrap;
     margin: auto;
+    margin-bottom: 20px;
     position: relative;
     background-color: black;
     /* min-height: 100px; */ /*If you don't want it to grow from zero, uncomment this.*/

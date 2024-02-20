@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<script>
-    console.time('page loaded');
-</script>
+
 
 <?php
 $start = microtime(true);
@@ -64,7 +62,8 @@ if ($questionCounter + 1  >= count($quiz['questionIds'])) {
     <link rel="stylesheet" href="assets/css/cutterImageContiner.css">
     <link rel="stylesheet" href="assets/css/q-annim.css">
     <script src="assets/js/cutter.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/main.js" defer></script>   
+    
 
 
 </head>
@@ -104,9 +103,9 @@ if ($questionCounter + 1  >= count($quiz['questionIds'])) {
 
                         for ($i = 0; $i < count($answers); $i++) {
                             $currAnswerId = $_SESSION['quiz']['answerIds'][$questionCounter][$i];
-                            echo ('  <label class="form-check-label questionBtn" for= "answers' . $i . '">' . $answers[$i] . '
-                <input class = form-check-inputw" id="answers' . $i . '" name = "answers[]" type=' . $type . ' value = ' . $currAnswerId . '>
-                </label>');
+                            echo ('<label class="form-check-label questionBtn" for= "answers' . $i . '">' . $answers[$i] . '
+                                    <input class = "form-check-input" id="answers' . $i . '" name = "answers[]" type="' . $type . '" value = "' . $currAnswerId . '">
+                                    </label>');
                         }
 
                         ?>
@@ -124,29 +123,32 @@ if ($questionCounter + 1  >= count($quiz['questionIds'])) {
 
 
 
-
-
-    <?php
-    echo ("<script>
-        let urls = " . json_encode($links) . ";
-        </script>");
-    ?>
-
-    <script>
+<script>
+   
+</script>
+    <!-- <script>
+        let urls = <?php echo json_encode($links); ?>;
         let haveImage = <?php echo json_encode($haveImage); ?>;
-        console.log(haveImage);
         let images = <?php echo json_encode($filenames); ?>;
         let resolution = <?php echo json_encode($actualRes); ?>;
         let imgCounter = <?php echo json_encode($imgCounter); ?>;
         let countdown = <?php echo json_encode($countdown); ?>;
-    </script>
+    </script> -->
 
 
 </body>
 <?php
+// prettyPrint("haveImage:".$haveImage);
+// echo("haveImage:".$haveImage);
+echo("<script> 
+let urls = " . json_encode($links) . ";
+</script>");
+
+// prettyPrint($links);
+// prettyPrint($haveImage);
 $end = microtime(true);
 $totalTime = $end - $start;
-logger(); // comment or delete this line to remove the logging call
+/* logger(); */ // comment or delete this line to remove the logging call
 ?>
 
 </html>

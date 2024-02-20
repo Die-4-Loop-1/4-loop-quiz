@@ -29,9 +29,9 @@ function submitForm() {
 }
 
 const timerInterval = setInterval(updateTimer, 1000);
-document.addEventListener('DOMContentLoaded', function() {
-    const timerInterval = setInterval(updateTimer, 1000);
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//     const timerInterval = setInterval(updateTimer, 1000);
+// });
 
 
 //Wiki von Andreas
